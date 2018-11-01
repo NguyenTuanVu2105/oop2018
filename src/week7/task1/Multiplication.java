@@ -1,22 +1,23 @@
 package week7.task1;
 
-public class Addition extends BinaryExpression{
+public class Multiplication extends BinaryExpression{
     private Expression left;
     private Expression right;
 
-    public Addition(Expression left, Expression right) {
+    public Multiplication(Expression left, Expression right) {
         this.left = left;
         this.right = right;
     }
 
     @Override
     public String toString() {
-        return left.toString() + " + " + right.toString();
+        if (left instanceof Numeral && right instanceof Numeral) return left.toString() + "*" + right.toString();
+        else return "(" + left.toString() + "*" + right.toString() + ")";
     }
 
     @Override
     public int evalute() {
-        return left.evalute() + right.evalute();
+        return left.evalute() * right.evalute();
     }
 
     @Override
